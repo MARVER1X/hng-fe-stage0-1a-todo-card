@@ -3,55 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HNG Stage 0 - Task Tracker</title>
+  <title>HNG Stage 1A - Task Tracker</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
+
   <div class="app-wrapper">
     <header class="app-header">
       <h1>TO-DO List</h1>
-      <button class="icon-btn add-task-btn" title="Add Task" aria-label="Add new task" tabindex="-1">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+      <button class="icon-btn add-task-btn" aria-label="Add new task" tabindex="-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
+        </svg>
       </button>
     </header>
 
     <main class="container">
       <article class="todo-card" id="main-card" data-testid="test-todo-card">
-        
-        <header class="card-header">
-          <div class="title-wrapper">
-            <label class="custom-checkbox">
-              <input type="checkbox" id="complete-toggle" data-testid="test-todo-complete-toggle">
-              <span class="checkmark"></span>
-              <span class="sr-only">Mark completed</span>
-            </label>
-            <h2 class="todo-title" id="todo-title" data-testid="test-todo-title">Optimize Webhook Architecture</h2>
-          </div>
-          <span class="badge priority-high" data-testid="test-todo-priority" aria-label="Priority High">High</span>
-        </header>
 
-        <p class="todo-description" id="todo-desc" data-testid="test-todo-description">Refactor the Python and SQL data logger to handle concurrent cross origin requests seamlessly.</p>
+        <!-- Priority Indicator Bar -->
+        <div class="priority-indicator" id="priority-indicator" data-testid="test-todo-priority-indicator"></div>
 
-        <div class="metadata-container">
-          <span class="badge status-pending" id="todo-status" data-testid="test-todo-status">Pending</span>
-          
-          <div class="time-wrapper">
-            <time datetime="2026-04-16T12:00:00" class="due-date" data-testid="test-todo-due-date">Due Apr 16, 2026</time>
-            <span class="time-remaining" id="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite">Due in 4 Day(s)</span>
+        <div class="main-card">
+          <!-- Card Header -->
+          <header class="card-header">
+            <div class="title-wrapper">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="complete-toggle" data-testid="test-todo-complete-toggle" aria-label="Mark completed">
+                <span class="checkmark"></span>
+              </label>
+              <h2 class="todo-title" id="todo-title" data-testid="test-todo-title">Optimize Webhook Architecture</h2>
+            </div>
+            <span class="badge priority-high" id="priority-badge" data-testid="test-todo-priority" aria-label="Priority: High">High</span>
+          </header>
+
+          <!-- Expand Toggle -->
+          <button
+            class="expand-toggle"
+            id="expand-toggle"
+            data-testid="test-todo-expand-toggle"
+            aria-expanded="false"
+            aria-controls="collapsible-section"
+          >Show more</button>
+
+          <!-- Collapsible Description -->
+          <div id="collapsible-section" data-testid="test-todo-collapsible-section" class="collapsible-section collapsed">
+            <p class="todo-description" id="todo-desc" data-testid="test-todo-description">
+              Refactor the Python and SQL data logger to handle concurrent cross origin requests seamlessly while maintaining strict data integrity and minimal latency across distributed environments.
+            </p>
           </div>
+
+          <!-- Metadata -->
+          <div class="metadata-container">
+            <div class="status-wrapper">
+              <label for="status-control" class="sr-only">Task status</label>
+              <select id="status-control" data-testid="test-todo-status-control" aria-label="Task status" class="status-select status-pending">
+                <option style="color: white;" value="Pending">Pending</option>
+                <option style="color: white;" value="In Progress">In Progress</option>
+                <option style="color: white;" value="Done">Done</option>
+              </select>
+              <span class="badge status-pending" id="todo-status" data-testid="test-todo-status">Pending</span>
+            </div>
+
+            <div class="time-wrapper">
+              <time datetime="2026-04-17T12:00:00" class="due-date" id="due-date-display" data-testid="test-todo-due-date">Due Apr 17, 2026</time>
+              <span class="time-remaining" id="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite"></span>
+              <span class="overdue-indicator" id="overdue-indicator" data-testid="test-todo-overdue-indicator">⚠ Overdue</span>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <ul class="tags-list" role="list" data-testid="test-todo-tags">
+            <li class="tag" data-testid="test-todo-tag-urgent">Urgent</li>
+            <li class="tag" data-testid="test-todo-tag-work">Work</li>
+            <li class="tag">Backend</li>
+          </ul>
+
+          <!-- Footer Buttons -->
+          <footer class="card-footer">
+            <button class="btn btn-edit" id="edit-btn" data-testid="test-todo-edit-button">Edit</button>
+            <button class="btn btn-delete" id="delete-btn" data-testid="test-todo-delete-button">Delete</button>
+          </footer>
         </div>
 
-        <ul class="tags-list" role="list" data-testid="test-todo-tags">
-          <li class="tag" data-testid="test-todo-tag-urgent">Urgent</li>
-          <li class="tag" data-testid="test-todo-tag-work">Work</li>
-          <li class="tag">Backend</li>
-        </ul>
-
-        <footer class="card-footer">
-          <button class="btn btn-edit" id="edit-btn" data-testid="test-todo-edit-button">Edit</button>
-          <button class="btn btn-delete" id="delete-btn" data-testid="test-todo-delete-button">Delete</button>
-        </footer>
+        <!-- Edit Form (hidden by default) -->
+        <div class="edit-form" id="edit-form" data-testid="test-todo-edit-form">
+          <div class="form-group">
+            <label for="edit-title-input">Title</label>
+            <input type="text" id="edit-title-input" data-testid="test-todo-edit-title-input" placeholder="Task title">
+          </div>
+          <div class="form-group">
+            <label for="edit-desc-input">Description</label>
+            <textarea id="edit-desc-input" data-testid="test-todo-edit-description-input" rows="3" placeholder="Task description"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-priority-select">Priority</label>
+              <select id="edit-priority-select" data-testid="test-todo-edit-priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High" selected>High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit-due-date-input">Due Date</label>
+              <input type="datetime-local" id="edit-due-date-input" data-testid="test-todo-edit-due-date-input">
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-save" id="save-btn" data-testid="test-todo-save-button">Save</button>
+            <button class="btn btn-cancel" id="cancel-btn" data-testid="test-todo-cancel-button">Cancel</button>
+          </div>
+        </div>
 
       </article>
     </main>
