@@ -85,11 +85,25 @@ All required `data-testid` attributes are implemented and match the spec exactly
 No build step needed. Just clone and open:
 
 ```bash
-git clone https://github.com/MARVER1X/hng-stage-0-todo-card.git
-cd hng-stage-0-todo-card
+git clone https://github.com/MARVER1X/hng-fe-stage-0-todo-card.git
+cd hng-fe-stage-0-todo-card
 # Open index.html in your browser
 ```
+---
 
+## 🚀 Update — Stage 1A (Advanced Features)
+
+This project has been extended with more advanced interactivity and state management.
+
+### ✨ New Additions
+
+- **Edit Mode** — inline form to update title, description, priority, and due date (with save/cancel)
+- **Status Control** — dropdown for switching between Pending, In Progress, and Done
+- **Priority Indicator Bar** — dynamic color strip based on task priority
+- **Expand / Collapse** — long descriptions can be toggled (Show more / less)
+- **Overdue Indicator** — visual alert when a task passes its due date
+- **Synced State Logic** — checkbox, status badge, and dropdown stay consistent
+- **Improved Time Display** — more precise countdown (days, hours, minutes)
 ---
 
 ## 👤 Author
