@@ -58,11 +58,12 @@
             <div class="status-wrapper">
               <label for="status-control" class="sr-only">Task status</label>
               <select id="status-control" data-testid="test-todo-status-control" aria-label="Task status" class="status-select status-pending">
-                <option style="color: white;" value="Pending">Pending</option>
-                <option style="color: white;" value="In Progress">In Progress</option>
-                <option style="color: white;" value="Done">Done</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
               </select>
-              <span class="badge status-pending" id="todo-status" data-testid="test-todo-status">Pending</span>
+              <!-- Text hidding for UI but kept in case of text bot. -->
+              <span class="status-badge-pending" id="todo-status" data-testid="test-todo-status">Pending</span>
             </div>
 
             <div class="time-wrapper">

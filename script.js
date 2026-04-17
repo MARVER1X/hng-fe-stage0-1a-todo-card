@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Sync badge and status control text + class 
     statusBadge.textContent = newStatus;
-    const badgeClass = "status-" + newStatus.toLowerCase().replace(" ", "-");
+    const badgeClass = "status-badge-" + newStatus.toLowerCase().replace(" ", "-");
     const statusControlClass = "status-select status-" + newStatus.toLowerCase().replace(" ", "-");
-    statusBadge.className = `badge ${badgeClass}`;
+    statusBadge.className = `${badgeClass}`;
     statusControl.className = statusControlClass;
 
     // Sync dropdown
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timeRemainingEl.style.color = "var(--warning-orange)";
 
       if (diff >= DAY) {
-        const d = Math.rouund(diff / DAY);
+        const d = Math.round(diff / DAY);
         timeRemainingEl.textContent = `Due in ${d} day${d > 1 ? "s" : ""}`;
       } else if (diff >= HOUR) {
         const h = Math.round(diff / HOUR);
