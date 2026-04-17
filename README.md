@@ -85,8 +85,8 @@ All required `data-testid` attributes are implemented and match the spec exactly
 No build step needed. Just clone and open:
 
 ```bash
-git clone https://github.com/MARVER1X/hng-fe-stage-0-todo-card.git
-cd hng-fe-stage-0-todo-card
+git clone https://github.com/MARVER1X/hng-fe-stage0-1a-todo-card.git
+cd hng-fe-stage0-1a-todo-card
 # Open index.html in your browser
 ```
 ---
