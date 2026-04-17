@@ -6,7 +6,7 @@ A clean, accessible, and responsive Todo Card component built with vanilla HTML,
 
 ## 🔗 Live Demo
 
-[View Live on GitHub Pages](https://MARVER1X.github.io/hng-stage0-1a-todo-card/)
+[View Live on GitHub Pages](https://MARVER1X.github.io/hng-fe-stage0-1a-todo-card/)
 
 ---
 
